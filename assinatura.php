@@ -7,22 +7,23 @@ header('Content-type: image/jpeg; charset=utf-8');
 
 // Variáveis de fundo e altura definidas com base nos parâmetros
 $backgrounds = [
-    'bg1' => ['path' => 'imagens/bg1.png', 'height' => [57, 73, 100, 119]],
-    'bg2' => ['path' => 'imagens/bg2.png', 'height' => [57, 73, 100, 119]],
-    'bg3' => ['path' => 'imagens/bg3.png', 'height' => [57, 73, 100, 119, 157]],
-    'bghdc1' => ['path' => 'imagens/bghdc1.png', 'height' => [37, 53, 78, 103]],
-    'bghdc2' => ['path' => 'imagens/bghdc2.png', 'height' => [37, 53, 85, 103]],
-    'bghdc3' => ['path' => 'imagens/bghdc3.png', 'height' => [37, 53, 78, 96, 130]],
+    'bg1'   => ['path' => 'imagens/bg1.png', 'height' => [57, 73, 100, 119, 119  ]],
+    'bg2'   => ['path' => 'imagens/bg2.png', 'height' => [57, 73, 100, 119, 119  ]],
+    'bg3'   => ['path' => 'imagens/bg3.png', 'height' => [57, 73, 100, 119, 141  ]],
+    'bg4'   => ['path' => 'imagens/bg4.png', 'height' => [37, 53, 78, 103,  119  ]],
+    'bg5'   => ['path' => 'imagens/bg5.png', 'height' => [37, 53, 85, 103,  119  ]],
+    'bg6'   => ['path' => 'imagens/bg6.png', 'height' => [37, 53, 78, 96,   115  ]],
 ];
 
 // Seleciona qual tamanho e fundo será usado
 $imageKey = '';
-    if (isset($_GET["cel"]) && !isset($_GET["tel"]))                        {$imageKey = 'bg1';} 
-elseif (isset($_GET["tel"]) && $_GET["cel"] == "")                          {$imageKey = 'bg2';}
-elseif ($_GET["tel"] != "" && $_GET["cel"] != "")                           {$imageKey = 'bg3';}
-elseif (isset($_GET["cel"]) && $_GET["tel"] == "" && isset($_GET["hdc"]))   {$imageKey = 'bghdc1';} 
-elseif (isset($_GET["tel"]) && $_GET["cel"] == "" && isset($_GET["hdc"]))   {$imageKey = 'bghdc2';} 
-elseif ($_GET["tel"] != "" && $_GET["cel"] != "" && $_GET["hdc"] == "on")   {$imageKey = 'bghdc3';}
+    if (!empty($_GET["cel"]) && empty($_GET["tel"])  && empty($_GET["hdc"])) {$imageKey = 'bg1';}    //Se apenas o Celular estiver definido 
+elseif (!empty($_GET["tel"]) && empty($_GET["cel"])  && empty($_GET["hdc"])) {$imageKey = 'bg2';}    //Se apenas o Telefone estiver definido 
+elseif (!empty($_GET["tel"]) && !empty($_GET["cel"]) && empty($_GET["hdc"])) {$imageKey = 'bg3';}    //Se ambos estiverem definidos
+elseif (!empty($_GET["cel"]) && empty($_GET["tel"])  && ($_GET["hdc"]=="on")){$imageKey = 'bg4';} //Se apenas o Celular estiver definido 
+elseif (!empty($_GET["tel"]) && empty($_GET["cel"])  && ($_GET["hdc"]=="on")){$imageKey = 'bg5';} //Se apenas o Telefone estiver definido 
+elseif (!empty($_GET["tel"]) && !empty($_GET["cel"]) && ($_GET["hdc"]=="on")){$imageKey = 'bg6';} //Se ambos estiverem definidos 
+else                                                                         {$imageKey = 'bg1';}    //Se nenhum parâmetro for passado, use um valor de fallback
 
 //Verifica se a imagem de fundo existe
 $imgResource = ImageCreateFrompng($backgrounds[$imageKey]['path']);
@@ -30,13 +31,16 @@ if (!$imgResource) {
     die("Erro ao carregar a imagem de fundo.");
 }
 
+//Explore a Array
 list($alturanome, $alturacargo, $alturaemail, $alturatel, $alturacel) = $backgrounds[$imageKey]['height'];
-
 // Explode as GET
 $nome = urldecode($_GET['nome']);
 $cargo = urldecode($_GET['cargo']);
 $email = urldecode($_GET['email']);
+if (!empty($_GET["tel"])) {$tel = urldecode($_GET['tel']);}
+if (!empty($_GET["cel"])) {$cel = urldecode($_GET['cel']);}
 
+//Função para validar email
 function validaEmail($email) {
     $vemail = "$email@bravante.com.br";
     if (!filter_var($vemail, FILTER_VALIDATE_EMAIL)) {
@@ -44,15 +48,8 @@ function validaEmail($email) {
     }
     return true;
 }
-
+//Invoca a função e valida o email
 validaEmail($email);
-
-if (isset($_GET["tel"])) {
-    $tel = urldecode($_GET['tel']);
-}
-if (isset($_GET["cel"])) {
-    $cel = urldecode($_GET['cel']);
-}
 
 // Define a cor
 $textcolor1 = imagecolorallocate($imgResource, 78, 127, 113);
@@ -69,14 +66,14 @@ if (!file_exists($fnormal) || !file_exists($fcalibri) || !file_exists($fnegrito)
 }
 
 // Tamanho das fontes
-$nomeSize = 17.1;
-$cargoSize = 11.2;
-$emailSize = 11.2;
-$telSize = 10;
+$nomeSize   = 17.1;
+$cargoSize  = 11.2;
+$emailSize  = 11.2;
+$telSize    = 10;
 
 // Cria caixa de texto para calcular largura e altura
-$textNome = imagettfbbox($nomeSize, 0, $fnegrito, $nome);
-$textCargo = imagettfbbox($cargoSize, 0, $fnegrito, $cargo);
+$textNome   = imagettfbbox($nomeSize, 0, $fnegrito, $nome);
+$textCargo  = imagettfbbox($cargoSize, 0, $fnegrito, $cargo);
 $textrEmail = imagettfbbox($emailSize, 0, $fnormal, $email);
 
 // Escreve o nome e cargo
@@ -101,9 +98,8 @@ if ($_GET["tel"] != "") {
 }
 
 // Se for informado o número de celular, imprime o texto
-if ($_GET["cel"] != "") {
-    $celPosition = ($_GET["tel"] == "") ? $alturacel : $alturacel - 16;
-    imagettftext($imgResource, $telSize, 0, 267, $celPosition, $textcolor2, $fnormal, $cel);
+if (!empty($cel)) {
+    imagettftext($imgResource, $telSize, 0, 267, $alturacel, $textcolor2, $fnormal, $cel);
 }
 
 // Envia a imagem para o browser
