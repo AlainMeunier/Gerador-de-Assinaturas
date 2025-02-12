@@ -26,8 +26,9 @@
 <p align="center">
  <a href="#-sobre-o-projeto">Sobre</a> •
  <a href="#-pre-requisito">Pré-Requisitos</a> • 
-  <a href="#user-content--licença">Licença</a>
- <a href="#-autor">Autor</a> • 
+<a href="#-live-preview">Live Preview</a> •
+  <a href="#user-content--licença">Licença</a> •
+ <a href="#-autor">Autor</a> 
 
 </p>
 
@@ -65,7 +66,7 @@ Este projeto esta sobe a licença [MIT](./LICENSE).
  <br />
  <br />
  
-[![LinkedIn Learning](https://custom-icon-badges.demolab.com/badge/Alain%20Meunier-0A66C2?logo=linkedin-white&logoColor=fff)]([#](https://www.linkedin.com/in/Alain-Meunier/))
+[![LinkedIn Learning](https://custom-icon-badges.demolab.com/badge/Alain%20Meunier-0A66C2?logo=linkedin-white&logoColor=fff)](https://www.linkedin.com/in/Alain-Meunier/)
 [![Gmail Badge](https://img.shields.io/badge/-alain.meunier@hotmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:alain.meunier@hotmail.com)](mailto:alain.meunier@hotmail.com)
 
 ---
