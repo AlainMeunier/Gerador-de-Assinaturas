@@ -1,2 +1,67 @@
-# Gerador de Assinatura
- Gerador de Assinaturas, criado pro Grupo Bravante.
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/AlainMeunier/Gerador-de-Assinaturas?color=%2304D361">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/AlainMeunier/Gerador-de-Assinaturas">
+  
+  <a href="https://github.com/AlainMeunier/Gerador-de-Assinaturas/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/AlainMeunier/Gerador-de-Assinaturas">
+  </a>
+    
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+   <a href="https://github.com/AlainMeunier/Gerador-de-Assinaturas/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/AlainMeunier/Gerador-de-Assinaturas?style=social">
+  </a>
+
+  
+ 
+</p>
+<h1 align="center">
+ Gerador de Assinaturas
+</h1>
+
+<h4 align="center"> 
+	Concluído 🚀
+</h4>
+
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-pre-requisito">Pré-Requisitos</a> • 
+  <a href="#user-content--licença">Licença</a>
+ <a href="#-autor">Autor</a> • 
+
+</p>
+
+
+## 💻 Sobre o projeto
+
+Ferramenta criada para gerar uma imagem através de um formulário simples, para automatizar um processo do Grupo Bravante.
+
+---
+
+## Pré-requisitos
+
+-PHP 8.2.1
+-Biblioteca GD >7.x
+
+---
+
+## 📝 Licença
+
+Este projeto esta sobe a licença [MIT](./LICENSE).
+
+---
+
+## 🦸 Autor
+
+<a href="https://alainmeunier.com.br/">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/38146660?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Alain Meunier</b></sub></a>🚀
+ <br />
+ <br />
+ 
+[![LinkedIn Learning](https://custom-icon-badges.demolab.com/badge/Alain%20Meunier-0A66C2?logo=linkedin-white&logoColor=fff)]([#](https://www.linkedin.com/in/Alain-Meunier/))
+[![Gmail Badge](https://img.shields.io/badge/-alain.meunier@hotmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:alain.meunier@hotmail.com)](mailto:alain.meunier@hotmail.com)
+
+---
+
